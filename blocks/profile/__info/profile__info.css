@@ -1,8 +1,20 @@
 .profile__info {
-    width: 336px;
+    max-width: calc(100% - 150px);
+    min-width: 336px;
     margin-left: 30px;
+    padding-right: 50px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     align-items: baseline;
+}
+
+@media screen and (max-width: 686px) {
+    .profile__info {
+        max-width: calc(100% - 30px);
+        width:  calc(70% - 30px);
+        min-width: 280px;
+        margin: 10px 0 0;
+        padding-right: 0;
+        justify-content: center;
+    }
 }
