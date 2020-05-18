@@ -8,3 +8,9 @@
     }
 }
 
+@media screen and (max-width: 320px) {
+    .page__gallery {
+        padding-top: 36px;
+    }
+}
+

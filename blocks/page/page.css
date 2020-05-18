@@ -2,20 +2,15 @@
 @import url(./__header/page__header.css);
 @import url(./__profile/page__profile.css);
 @import url(./__gallery/page__gallery.css);
+@import url(./__footer/page__footer.css);
 
 .page {
+    width: 100%;
+    height: 100%;
+    position: relative;
     background-color: #000000;
     color: #FFFFFF;
     font-family: Inter, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
-* { outline: 2px dotted red; }
-* * { outline: 2px dotted green; }
-* * * { outline: 2px dotted orange; }
-* * * * { outline: 2px dotted blue; }
-* * * * * { outline: 1px solid red; }
-* * * * * * { outline: 1px solid green; }
-* * * * * * * { outline: 1px solid orange; }
-* * * * * * * * { outline: 1px solid blue; }

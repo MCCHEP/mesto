@@ -1,0 +1,11 @@
+.page__footer {
+    padding-bottom: calc( 0.025 * 100vw + 28px);
+    padding-top: calc(0.01875 * 100vw + 42px);
+    margin: auto 0 0;
+}
+
+@media screen and (max-width: 922px) and (min-width:768px) {
+    .page__footer {
+        padding: 51px 2% 4%;
+    }
+}
