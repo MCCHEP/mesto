@@ -1,0 +1,18 @@
+.element__text {
+    display: flex;
+    align-items: flex-end;
+    width: 246px;
+    margin: 25px 0 31px;
+}
+
+@media screen and (max-width: 922px) and (min-width: 686px) {
+    .element__text {
+        width:220px;
+    }
+}
+
+@media screen and (max-width: 585px) {
+    .element__text {
+        width: calc(64 / 265 * 100vw + 8942 / 53 * 1px);
+    }
+}

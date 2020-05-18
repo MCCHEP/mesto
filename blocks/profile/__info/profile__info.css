@@ -8,7 +8,7 @@
     align-items: baseline;
 }
 
-@media screen and (max-width: 686px) {
+@media screen and (max-width: 719px) {
     .profile__info {
         max-width: calc(100% - 30px);
         width:  calc(70% - 30px);
