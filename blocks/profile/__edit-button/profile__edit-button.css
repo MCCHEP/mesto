@@ -3,10 +3,15 @@
     height: 24px;
     margin-left: 17px;
     border: 1px solid #FFFFFF;
-    background-color: black;
+    background-color: transparent;
     background-image: url(../../../images/edit-icon.svg);
     background-position: center;
     background-repeat: no-repeat;
+    transition: opacity 0.4s ease;
+}
+
+.profile__edit-button:hover {
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 686px) {

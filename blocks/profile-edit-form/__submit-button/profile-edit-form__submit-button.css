@@ -11,6 +11,11 @@
     font-size: 18px;
     line-height: 22px;
     text-align: center;
+    transition: background 0.4s ease;
+}
+
+.profile-edit-form__submit-button:hover {
+    background: rgba(0, 0, 0, 0.8);
 }
 
 @media screen and (max-width: 600px) {
