@@ -1,0 +1,24 @@
+.popup__container {
+    width: 477px;
+    min-height: 385px;
+    margin-top: calc((100vh - 385px) / 2);
+    margin-left: calc((100vw - 430px) / 2);
+    display:flex;
+    align-items: flex-end;
+}
+
+@media screen and (max-width: 600px) {
+    .popup__container {
+        width: 90vw;
+        margin-left: 5vw;
+        display:flex;
+        flex-direction: column-reverse;
+        align-items: flex-end;
+    }
+}
+
+@media screen and (max-height: 480px) {
+    .popup__container {
+        margin-top: 20px;
+    }
+}
