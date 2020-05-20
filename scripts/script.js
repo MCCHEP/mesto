@@ -8,7 +8,7 @@ const jobInput = formElement.querySelector('.form__input_type_occupation');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__occupation');
 
-function popupOpenClose() {
+function openClosePopup() {
     if (popup.classList.contains('popup_opened') === false) {
         nameInput.value = profileName.textContent; 
         jobInput.value = profileJob.textContent;
@@ -25,10 +25,10 @@ function formSubmitHandler (evt) {
     // Вставьте новые значения с помощью textContent
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    popupOpenClose();
+    openClosePopup();
 }
 
 //Слушатели закрытия/открытия, отправки формы
-formCaller.addEventListener('click', popupOpenClose);
-formCloser.addEventListener('click', popupOpenClose);
+formCaller.addEventListener('click', openClosePopup);
+formCloser.addEventListener('click', openClosePopup);
 formElement.addEventListener('submit', formSubmitHandler);
