@@ -3,18 +3,18 @@ const formElement = document.querySelector('.form');
 const formCaller = document.querySelector('.profile__edit-button');
 const formCloser = document.querySelector('.popup__close-button');
 const popup = document.querySelector('.popup');
+const nameInput = formElement.querySelector('.form__input_type_name');
+const jobInput = formElement.querySelector('.form__input_type_occupation');
+const profileName = document.querySelector('.profile__name');
+const profileJob = document.querySelector('.profile__occupation');
 
-function popupOpener() {
-    popup.classList.add('popup_opened'  );
+function popupOpenClose() {
+    if (popup.classList.contains('popup_opened') === false) {
+        nameInput.value = profileName.textContent; 
+        jobInput.value = profileJob.textContent;
+    } 
+    popup.classList.toggle('popup_opened');
 }
-
-function popupCloser() {
-    popup.classList.remove('popup_opened');
-}
-
-formCaller.addEventListener('click', popupOpener);
-formCloser.addEventListener('click', popupCloser);
-
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -22,21 +22,13 @@ function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
                                                 // Так мы можем определить свою логику отправки.
                                                 // О том, как это делать, расскажем позже.
-    // Находим поля формы в DOM
-    const nameInput = formElement.querySelector('.form__input_type_name');
-    const jobInput = formElement.querySelector('.form__input_type_occupation');
-
-    // Выберите элементы, куда должны быть вставлены значения полей
-    const profileName = document.querySelector('.profile__name');
-    const profileJob = document.querySelector('.profile__occupation');
-
-
     // Вставьте новые значения с помощью textContent
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    popupCloser();
+    popupOpenClose();
 }
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
+//Слушатели закрытия/открытия, отправки формы
+formCaller.addEventListener('click', popupOpenClose);
+formCloser.addEventListener('click', popupOpenClose);
 formElement.addEventListener('submit', formSubmitHandler);
