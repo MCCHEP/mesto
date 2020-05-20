@@ -1,5 +1,5 @@
 .page__gallery {
-    padding-top: 51px;
+    padding: 51px 0 0;
 }
 
 @media screen and (max-width: 922px) and (min-width:768px) {
@@ -10,7 +10,7 @@
 
 @media screen and (max-width: 320px) {
     .page__gallery {
-        padding-top: 36px;
+        padding: 36px 2% 4%;
     }
 }
 

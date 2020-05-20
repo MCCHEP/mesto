@@ -1,4 +1,5 @@
 .popup__close-button {
+    margin-top: -40px;
     align-self: end;
     width: 47px;
     height: 47px;
@@ -16,6 +17,7 @@
 
 @media screen and (max-width: 600px) {
     .popup__close-button {
+        margin-top:0;
         width: 50px;
         align-self: center;
         margin-bottom: 10px;

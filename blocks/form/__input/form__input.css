@@ -1,9 +1,7 @@
-@import url(./_type/form__input_type_name.css);
-@import url(./_type/form__input_type_occupation.css);
-
 .form__input {
     width: 358px;
     padding-bottom: 13px;
+    margin-bottom: 30px;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -11,7 +9,7 @@
     border-top: 0;
     border-left: 0;
     border-right: 0;
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 600px) {

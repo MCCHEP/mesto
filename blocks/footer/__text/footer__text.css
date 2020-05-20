@@ -14,3 +14,9 @@
         width: calc(338 / 447 * 100vw + 17894 / 447 * 1px);
     }
 }
+
+@media screen and (max-width: 320px) {
+    .footer__text {
+        font-size: 14px;
+    }
+}

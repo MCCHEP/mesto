@@ -6,6 +6,7 @@
     width: 430px;
     display: flex;
     padding: 0 36px 0;
+    box-sizing: border-box;
     flex-direction: column;
     background-color:#FFFFFF;
     color: #000000;
