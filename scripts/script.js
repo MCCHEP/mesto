@@ -1,5 +1,5 @@
 // Находим форму в DOM
-const formElement = document.querySelector('.profile-edit-form');
+const formElement = document.querySelector('.form');
 const formCaller = document.querySelector('.profile__edit-button');
 const formCloser = document.querySelector('.popup__close-button');
 const popup = document.querySelector('.popup');
@@ -23,8 +23,8 @@ function formSubmitHandler (evt) {
                                                 // Так мы можем определить свою логику отправки.
                                                 // О том, как это делать, расскажем позже.
     // Находим поля формы в DOM
-    const nameInput = formElement.querySelector('.profile-edit-form__input_type_name');
-    const jobInput = formElement.querySelector('.profile-edit-form__input_type_occupation');
+    const nameInput = formElement.querySelector('.form__input_type_name');
+    const jobInput = formElement.querySelector('.form__input_type_occupation');
 
     // Выберите элементы, куда должны быть вставлены значения полей
     const profileName = document.querySelector('.profile__name');

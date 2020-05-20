@@ -1,4 +1,4 @@
-.profile-edit-form__submit-button {
+.form__submit-button {
     margin: 48px 0 37px;
     width: 358px;
     padding: 14px 0 18px;
@@ -14,12 +14,12 @@
     transition: background 0.4s ease;
 }
 
-.profile-edit-form__submit-button:hover {
+.form__submit-button:hover {
     background: rgba(0, 0, 0, 0.8);
 }
 
 @media screen and (max-width: 600px) {
-    .profile-edit-form__submit-button {
+    .form__submit-button {
         width: 90%;
     }
 }

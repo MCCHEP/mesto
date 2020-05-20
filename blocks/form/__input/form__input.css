@@ -1,7 +1,7 @@
-@import url(./_type/profile-edit-form__input_type_name.css);
-@import url(./_type/profile-edit-form__input_type_occupation.css);
+@import url(./_type/form__input_type_name.css);
+@import url(./_type/form__input_type_occupation.css);
 
-.profile-edit-form__input {
+.form__input {
     width: 358px;
     padding-bottom: 13px;
     font-style: normal;
@@ -15,7 +15,7 @@
 }
 
 @media screen and (max-width: 600px) {
-    .profile-edit-form__input {
+    .form__input {
         width: 90%;
     }
 }
