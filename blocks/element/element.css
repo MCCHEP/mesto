@@ -2,11 +2,13 @@
 @import url(./__text/element__text.css);
 @import url(./__image-title/element__image-title.css);
 @import url(./__like-button/element__like-button.css);
+@import url(./__delete-button/element__delete-button.css);
 
 .element {
     border-radius: 10px;
     background-color: #FFFFFF;
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
 }
