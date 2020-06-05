@@ -1,18 +1,17 @@
-
 .element__like-button {
-    background: url(../../../images/like-icon.svg);
-    width: 29px;
-    height: 24px;
-    border: 0;
-    margin-left: auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    transition: opacity 0.4s ease;
+  background: url(../../../images/like-icon.svg);
+  width: 29px;
+  height: 24px;
+  border: 0;
+  margin-left: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  transition: opacity 0.4s ease;
 }
 
 .element__like-button:hover {
-    opacity: 0.2;
+  opacity: 0.2;
 }
 
 .element__like-button:focus {

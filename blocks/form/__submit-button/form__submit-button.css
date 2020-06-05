@@ -1,27 +1,27 @@
 .form__submit-button {
-    margin: 18px 0 37px;
-    width: 358px;
-    padding: 14px 0 18px;
-    border: 0;
-    background: #000000;
-    border-radius: 2px;
-    color: #FFFFFF;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 1.22;
-    text-align: center;
-    transition: background 0.4s ease;
+  margin: 18px 0 37px;
+  width: 358px;
+  padding: 14px 0 18px;
+  border: 0;
+  background: #000000;
+  border-radius: 2px;
+  color: #ffffff;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.22;
+  text-align: center;
+  transition: background 0.4s ease;
 }
 
 .form__submit-button:hover {
-    background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 @media screen and (max-width: 600px) {
-    .form__submit-button {
-        width: 100%;
-    }
+  .form__submit-button {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 320px) {

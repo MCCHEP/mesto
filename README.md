@@ -4,10 +4,12 @@
 
 **Технологии используемые в проекте**
 
-* HTML,CSS и Javascript
-* Позиционирование с помощью Flexbox и Grid
-* CSS-функция calc()
-* навигация по DOM-дереву и изменение их содержания с помощью Javascript
+- HTML,CSS и Javascript
+- Позиционирование с помощью Flexbox и Grid
+- CSS-функция calc()
+- навигация по DOM-дереву и изменение их содержания с помощью Javascript
+- Обход массива с помощью forEach
+- Добавление разметки с помощью Javascript и тега template
 
 **Ссылка на Github Pages**
 

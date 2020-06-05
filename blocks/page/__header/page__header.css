@@ -1,9 +1,9 @@
 .page__header {
-    padding-top: 45px;
+  padding-top: 45px;
 }
 
 @media screen and (max-width: 1279px) {
-    .page__header {
-        padding-top: calc(17 / 960 * 100vw + 67px / 3);
-    }
+  .page__header {
+    padding-top: calc(17 / 960 * 100vw + 67px / 3);
+  }
 }

@@ -1,16 +1,16 @@
 .form__title {
-    width: 330px;
-    margin: 34px 0 54px;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 29px;
+  width: 330px;
+  margin: 34px 0 54px;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
 }
 
 @media screen and (max-width: 600px) {
-    .form__title {
-        width: 100%;
-    }
+  .form__title {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 320px) {

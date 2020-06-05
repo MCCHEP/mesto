@@ -1,12 +1,10 @@
 .popup__container {
-    display:flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-
-
 @media screen and (max-height: 480px) {
-    .popup__container {
-        margin-top: 20px;
-    }
+  .popup__container {
+    margin-top: 20px;
+  }
 }

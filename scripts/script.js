@@ -18,28 +18,28 @@ const photoPopup = document.querySelector('.popup_type_photo')
 const photoPopupCloser = photoPopup.querySelector('.popup__close-button');
 const initialCards = [
   {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
 
@@ -50,27 +50,28 @@ function openClosePopup(popup) {
 }
 
 //Обработчик формы профиля
-function profileFormHandler (evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-    // Так мы можем определить свою логику отправки.
-    // О том, как это делать, расскажем позже.
-    // Вставьте новые значения с помощью textContent
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
-    openClosePopup(profilePopup);
+function profileFormHandler(evt) {
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  // Так мы можем определить свою логику отправки.
+  // О том, как это делать, расскажем позже.
+  // Вставьте новые значения с помощью textContent
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
+  openClosePopup(profilePopup);
 }
 
 //Обработчик формы добавления места
-function placeFormHandler (evt) {
+function placeFormHandler(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  addItem(cardsContainer, renderCard(placeNameInput.value,placeLinkInput.value));
+  addItem(cardsContainer, renderCard(placeNameInput.value, placeLinkInput.value));
   openClosePopup(placePopup);
 }
 
 //Создание карточек из массива
-function getCards (arrayOfCards) {
+function getCards(arrayOfCards) {
   arrayOfCards.forEach((element) => {
-    addItem(cardsContainer, renderCard(element.name, element.link))});
+    addItem(cardsContainer, renderCard(element.name, element.link))
+  });
 }
 
 //Создание карточки из шаблона
@@ -92,8 +93,8 @@ function renderCard(name, link) {
   });
 
   cardImage.addEventListener('click', () => {
-      createSlide(cardImage);
-    }
+    createSlide(cardImage);
+  }
   );
 
   likeButton.addEventListener('click', function (evt) {
@@ -119,11 +120,11 @@ function createSlide(image) {
 
 
 //Слушатели
-document.addEventListener("DOMContentLoaded", () => {getCards(initialCards)});
-profileFormCaller.addEventListener('click',() => {openClosePopup(profilePopup);});
-profileFormCloser.addEventListener('click', () => {openClosePopup(profilePopup);});
+document.addEventListener("DOMContentLoaded", () => { getCards(initialCards) });
+profileFormCaller.addEventListener('click', () => { openClosePopup(profilePopup); });
+profileFormCloser.addEventListener('click', () => { openClosePopup(profilePopup); });
 profileForm.addEventListener('submit', profileFormHandler);
-placeFormCaller.addEventListener('click', () => {openClosePopup(placePopup);});
-placeFormCloser.addEventListener('click', () => {openClosePopup(placePopup);});
+placeFormCaller.addEventListener('click', () => { openClosePopup(placePopup); });
+placeFormCloser.addEventListener('click', () => { openClosePopup(placePopup); });
 placeForm.addEventListener('submit', placeFormHandler);
-photoPopupCloser.addEventListener('click', () => {openClosePopup(photoPopup);});
+photoPopupCloser.addEventListener('click', () => { openClosePopup(photoPopup); });

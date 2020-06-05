@@ -1,15 +1,15 @@
 .page__profile {
-    padding-top: 40px;
+  padding-top: 40px;
 }
 
 @media screen and (max-width: 1000px) and (min-width: 686px) {
-    .page__profile {
-        padding: 40px calc(6570px / 157 - 100vw * 5 / 157) 0;
-    }
+  .page__profile {
+    padding: 40px calc(6570px / 157 - 100vw * 5 / 157) 0;
+  }
 }
 
 @media screen and (max-width: 320px) {
-    .page__profile {
-        padding-top: 38px;
-    }
+  .page__profile {
+    padding-top: 38px;
+  }
 }
