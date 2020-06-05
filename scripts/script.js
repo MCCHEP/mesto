@@ -49,6 +49,14 @@ function openClosePopup(popup) {
   popup.classList.toggle('popup_opened');
 }
 
+//Заполнение формы профиля значениями со страницы
+function fillFromPage() {
+  if (profilePopup.classList.contains('popup_opened')) {
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
+  }
+}
+
 //Обработчик формы профиля
 function profileFormHandler(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -110,6 +118,7 @@ function addItem(container, item) {
   container.prepend(item);
 }
 
+//Создание слайда
 function createSlide(image) {
   const slideImage = document.querySelector('.popup__image');
   const slideTitle = document.querySelector('.popup__image-title');
@@ -122,6 +131,7 @@ function createSlide(image) {
 //Слушатели
 document.addEventListener("DOMContentLoaded", () => { getCards(initialCards) });
 profileFormCaller.addEventListener('click', () => { openClosePopup(profilePopup); });
+profileFormCaller.addEventListener('click', fillFromPage);
 profileFormCloser.addEventListener('click', () => { openClosePopup(profilePopup); });
 profileForm.addEventListener('submit', profileFormHandler);
 placeFormCaller.addEventListener('click', () => { openClosePopup(placePopup); });
