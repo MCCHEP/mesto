@@ -1,4 +1,4 @@
-// Находим форму в DOM
+// Находим элементы в DOM и объявляем константы
 const profilePopup = document.querySelector('.popup_type_profile-edit');
 const profileForm = document.querySelector('.form_type_profile-edit');
 const profileFormCaller = document.querySelector('.profile__edit-button');
@@ -7,16 +7,13 @@ const nameInput = profileForm.querySelector('.form__input_type_name');
 const jobInput = profileForm.querySelector('.form__input_type_occupation');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__occupation');
-
 const placeForm = document.querySelector('.form_type_place-add');
 const placePopup = document.querySelector('.popup_type_add-place');
 const placeFormCaller = document.querySelector('.profile__add-button');
 const placeFormCloser = placePopup.querySelector('.popup__close-button');
 const placeNameInput = placeForm.querySelector('.form__input_type_place-name');
 const placeLinkInput = placeForm.querySelector('.form__input_type_link');
-
 const cardsContainer = document.querySelector('.elements');
-
 const initialCards = [
   {
       name: 'Архыз',
@@ -44,12 +41,13 @@ const initialCards = [
   }
 ];
 
+//Функции
+//Открытие и закрытие попапа
 function openClosePopup(popup) {
-    popup.classList.toggle('popup_opened');
+  popup.classList.toggle('popup_opened');
 }
 
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
+//Обработчик формы профиля
 function profileFormHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
     // Так мы можем определить свою логику отправки.
@@ -60,41 +58,57 @@ function profileFormHandler (evt) {
     openClosePopup(profilePopup);
 }
 
+//Обработчик формы добавления места
+function placeFormHandler (evt) {
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  addItem(cardsContainer, renderCard(placeNameInput.value,placeLinkInput.value));
+  openClosePopup(placePopup);
+}
+
+//Создание карточек из массива
 function getCards (arrayOfCards) {
   arrayOfCards.forEach((element) => {
     addItem(cardsContainer, renderCard(element.name, element.link))});
 }
 
+//Создание карточки из шаблона
 function renderCard(name, link) {
   const cardTemplate = document.querySelector('.card-template').content;
-  // клонируем содержимое тега template
   const card = cardTemplate.cloneNode(true);
   const cardTitle = card.querySelector('.element__image-title');
   const cardImage = card.querySelector('.element__image');
+  const deleteCardButton = card.querySelector('.element__delete-button');
+  const likeButton = card.querySelector('.element__like-button');
+
   cardTitle.textContent = name;
   cardImage.src = link;
+
+  deleteCardButton.addEventListener('click', function () {
+    const cardItem = deleteCardButton.closest('.element');
+    cardItem.remove();
+  });
+
+  likeButton.addEventListener('click', function (evt) {
+    const eventTarget = evt.target;
+    console.log(eventTarget);
+    eventTarget.classList.toggle('element__like-button_active');
+  });
   return card;
 }
 
+//Добавление элемента в контейнер
 function addItem(container, item) {
-  container.append(item);
+  container.prepend(item);
 }
 
-function placeFormHandler (evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  // Так мы можем определить свою логику отправки.
-  // О том, как это делать, расскажем позже.
-  // Вставьте новые значения с помощью textContent
-  addItem(cardsContainer, renderCard(placeNameInput.value,placeLinkInput.value));
-  openClosePopup(placePopup);
-}
 
+
+//Слушатели
 document.addEventListener("DOMContentLoaded", () => {getCards(initialCards)});
-
 profileFormCaller.addEventListener('click',() => {openClosePopup(profilePopup);});
 profileFormCloser.addEventListener('click', () => {openClosePopup(profilePopup);});
 profileForm.addEventListener('submit', profileFormHandler);
-
 placeFormCaller.addEventListener('click', () => {openClosePopup(placePopup);});
 placeFormCloser.addEventListener('click', () => {openClosePopup(placePopup);});
 placeForm.addEventListener('submit', placeFormHandler);
+
