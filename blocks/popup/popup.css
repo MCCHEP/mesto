@@ -1,5 +1,7 @@
 @import url(./__container/popup__container.css);
 @import url(./__close-button/popup__close-button.css);
+@import url(./__image/popup__image.css);
+@import url(./__image-title/popup__image-title.css);
 
 .popup {
     display: none;

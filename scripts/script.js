@@ -14,6 +14,8 @@ const placeFormCloser = placePopup.querySelector('.popup__close-button');
 const placeNameInput = placeForm.querySelector('.form__input_type_place-name');
 const placeLinkInput = placeForm.querySelector('.form__input_type_link');
 const cardsContainer = document.querySelector('.elements');
+const photoPopup = document.querySelector('.popup_type_photo')
+const photoPopupCloser = photoPopup.querySelector('.popup__close-button');
 const initialCards = [
   {
       name: 'Архыз',
@@ -82,11 +84,17 @@ function renderCard(name, link) {
 
   cardTitle.textContent = name;
   cardImage.src = link;
+  cardImage.alt = name;
 
   deleteCardButton.addEventListener('click', function () {
     const cardItem = deleteCardButton.closest('.element');
     cardItem.remove();
   });
+
+  cardImage.addEventListener('click', () => {
+      createSlide(cardImage);
+    }
+  );
 
   likeButton.addEventListener('click', function (evt) {
     const eventTarget = evt.target;
@@ -101,6 +109,13 @@ function addItem(container, item) {
   container.prepend(item);
 }
 
+function createSlide(image) {
+  const slideImage = document.querySelector('.popup__image');
+  const slideTitle = document.querySelector('.popup__image-title');
+  slideImage.src = image.src;
+  slideTitle.textContent = image.alt;
+  openClosePopup(photoPopup);
+}
 
 
 //Слушатели
@@ -111,4 +126,4 @@ profileForm.addEventListener('submit', profileFormHandler);
 placeFormCaller.addEventListener('click', () => {openClosePopup(placePopup);});
 placeFormCloser.addEventListener('click', () => {openClosePopup(placePopup);});
 placeForm.addEventListener('submit', placeFormHandler);
-
+photoPopupCloser.addEventListener('click', () => {openClosePopup(photoPopup);});

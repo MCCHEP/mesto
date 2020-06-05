@@ -2,71 +2,78 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pages/index.css">
-    <title>Место</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="pages/index.css">
+  <title>Место</title>
 </head>
 
 <body class="page">
-    <div class="page__container">
-        <header class="header page__header">
-            <img src="./images/logo.svg" alt="Логотип сайта - надпись Mesto" class="header__logo">
-        </header>
-        <main class="content">
-            <section class="profile page__profile">
-                <img src="./images/jak-kusto.jpg" alt="Фотография профиля" class="profile__avatar">
-                <div class="profile__info">
-                    <h1 class="profile__name">Жак-Ив Кусто</h1>
-                    <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
-                    <p class="profile__occupation">Исследователь океана</p>
+  <div class="page__container">
+    <header class="header page__header">
+      <img src="./images/logo.svg" alt="Логотип сайта - надпись Mesto" class="header__logo">
+    </header>
+    <main class="content">
+      <section class="profile page__profile">
+        <img src="./images/jak-kusto.jpg" alt="Фотография профиля" class="profile__avatar">
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
+          <p class="profile__occupation">Исследователь океана</p>
 
-                </div>
-                <button class="profile__add-button" type="button" aria-label="Добавить фото"></button>
-            </section>
-            <section class="gallery page__gallery">
-                <ul class="elements">
-                  <template class="card-template">
-                    <li class="element">
-                      <button class="element__delete-button" type="button" aria-label="Удалить фото места"></button>
-                      <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкесск" class="element__image">
-                      <div class="element__text">
-                          <h2 class="element__image-title">Карачаево-Черкесск</h2>
-                          <button class="element__like-button" type="button" aria-label="Поставить фотографии лайк"></button>
-                      </div>
-                    </li>
-                  </template>
-
-                </ul>
-            </section>
-        </main>
-        <footer class="footer page__footer">
-            <p class="footer__text">&copy; 2020 Mesto Russia</p>
-        </footer>
-    </div>
-    <div class="popup popup_type_profile-edit">
-        <div class="popup__container">
-            <form class="form form_type_profile-edit" name="profile-edit-form" action="#" method="GET">
-                <h3 class="form__title">Редактировать профиль</h3>
-                <input class="form__input form__input_type_name" type="text" value="" placeholder="Имя" required>
-                <input class="form__input form__input_type_occupation" type="text" value="" placeholder="Профессия" required>
-                <button class="form__submit-button" type="submit">Сохранить</button>
-            </form>
-            <button class="popup__close-button" type="button" aria-label="Закрыть окно редактирования профиля"></button>
         </div>
-    </div>
-    <div class="popup popup_type_add-place">
-      <div class="popup__container">
-          <form class="form form_type_place-add" name="place-add-form" action="#" method="GET">
-              <h3 class="form__title">Новое место</h3>
-              <input class="form__input form__input_type_place-name" type="text" value="" placeholder="Название" required>
-              <input class="form__input form__input_type_link" type="url" value="" placeholder="Ссылка на картинку" required>
-              <button class="form__submit-button" type="submit">Создать</button>
-          </form>
-          <button class="popup__close-button" type="button" aria-label="Закрыть окно редактирования профиля"></button>
-      </div>
+        <button class="profile__add-button" type="button" aria-label="Добавить фото"></button>
+      </section>
+      <section class="gallery page__gallery">
+        <ul class="elements">
+          <template class="card-template">
+            <li class="element">
+              <button class="element__delete-button" type="button" aria-label="Удалить фото места"></button>
+              <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкесск" class="element__image">
+              <div class="element__text">
+                <h2 class="element__image-title">Карачаево-Черкесск</h2>
+                <button class="element__like-button" type="button" aria-label="Поставить фотографии лайк"></button>
+              </div>
+            </li>
+          </template>
+
+        </ul>
+      </section>
+    </main>
+    <footer class="footer page__footer">
+      <p class="footer__text">&copy; 2020 Mesto Russia</p>
+    </footer>
   </div>
-    <script src="scripts/script.js"></script>
+  <div class="popup popup_type_profile-edit">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button" aria-label="Закрыть окно редактирования профиля"></button>
+      <form class="form form_type_profile-edit" name="profile-edit-form" action="#" method="GET">
+        <h3 class="form__title">Редактировать профиль</h3>
+        <input class="form__input form__input_type_name" type="text" value="" placeholder="Имя" required>
+        <input class="form__input form__input_type_occupation" type="text" value="" placeholder="Профессия" required>
+        <button class="form__submit-button" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_type_add-place">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button" aria-label="Закрыть окно редактирования профиля"></button>
+      <form class="form form_type_place-add" name="place-add-form" action="#" method="GET">
+        <h3 class="form__title">Новое место</h3>
+        <input class="form__input form__input_type_place-name" type="text" value="" placeholder="Название" required>
+        <input class="form__input form__input_type_link" type="url" value="" placeholder="Ссылка на картинку" required>
+        <button class="form__submit-button" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_type_photo">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button" aria-label="Закрыть окно редактирования профиля"></button>
+      <img src="" alt="" class="popup__image">
+      <h3 class="popup__image-title"></h3>
+    </div>
+  </div>
+  <script src="scripts/script.js"></script>
 </body>
 
 </html>

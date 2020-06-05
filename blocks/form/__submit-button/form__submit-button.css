@@ -20,6 +20,14 @@
 
 @media screen and (max-width: 600px) {
     .form__submit-button {
-        width: 90%;
+        width: 100%;
     }
+}
+
+@media screen and (max-width: 320px) {
+  .form__submit-button {
+    font-size: 14px;
+    line-height: 17px;
+    padding: 12px 0 14px;
+  }
 }
