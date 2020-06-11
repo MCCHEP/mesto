@@ -43,6 +43,7 @@ const initialCards = [
   }
 ];
 
+
 //Функции
 //Открытие и закрытие попапа
 function openClosePopup(popup) {
@@ -68,18 +69,18 @@ function profileFormHandler(evt) {
   openClosePopup(profilePopup);
 }
 
-//Обработчик формы добавления места
-function placeFormHandler(evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  addItem(cardsContainer, renderCard(placeNameInput.value, placeLinkInput.value));
-  openClosePopup(placePopup);
+//Добавление элемента в контейнер
+function addItem(container, item) {
+  container.prepend(item);
 }
 
-//Создание карточек из массива
-function getCards(arrayOfCards) {
-  arrayOfCards.forEach((element) => {
-    addItem(cardsContainer, renderCard(element.name, element.link))
-  });
+//Создание слайда
+function createSlide(image) {
+  const slideImage = document.querySelector('.popup__image');
+  const slideTitle = document.querySelector('.popup__image-title');
+  slideImage.src = image.src;
+  slideTitle.textContent = image.alt;
+  openClosePopup(photoPopup);
 }
 
 //Создание карточки из шаблона
@@ -107,24 +108,23 @@ function renderCard(name, link) {
 
   likeButton.addEventListener('click', function (evt) {
     const eventTarget = evt.target;
-    console.log(eventTarget);
     eventTarget.classList.toggle('element__like-button_active');
   });
   return card;
 }
 
-//Добавление элемента в контейнер
-function addItem(container, item) {
-  container.prepend(item);
+//Обработчик формы добавления места
+function placeFormHandler(evt) {
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  addItem(cardsContainer, renderCard(placeNameInput.value, placeLinkInput.value));
+  openClosePopup(placePopup);
 }
 
-//Создание слайда
-function createSlide(image) {
-  const slideImage = document.querySelector('.popup__image');
-  const slideTitle = document.querySelector('.popup__image-title');
-  slideImage.src = image.src;
-  slideTitle.textContent = image.alt;
-  openClosePopup(photoPopup);
+//Создание карточек из массива
+function getCards(arrayOfCards) {
+  arrayOfCards.forEach((element) => {
+    addItem(cardsContainer, renderCard(element.name, element.link))
+  });
 }
 
 
