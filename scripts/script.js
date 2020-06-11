@@ -118,6 +118,8 @@ function placeFormHandler(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   addItem(cardsContainer, renderCard(placeNameInput.value, placeLinkInput.value));
   openClosePopup(placePopup);
+  placeNameInput.value = '';
+  placeLinkInput.value = '';
 }
 
 //Создание карточек из массива
