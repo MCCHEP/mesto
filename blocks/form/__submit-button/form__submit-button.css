@@ -4,6 +4,7 @@
   padding: 14px 0 18px;
   border: 0;
   background: #000000;
+  box-sizing: border-box;
   border-radius: 2px;
   color: #ffffff;
   font-style: normal;
@@ -16,6 +17,13 @@
 
 .form__submit-button:hover {
   background: rgba(0, 0, 0, 0.8);
+}
+
+.form__submit-button:disabled {
+  color: #000000;
+  border: 1px solid #000000;
+  background:transparent;
+  opacity: 0.2;
 }
 
 @media screen and (max-width: 600px) {
