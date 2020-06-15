@@ -49,8 +49,14 @@
       <button class="popup__close-button" type="button" aria-label="Закрыть окно редактирования профиля"></button>
       <form class="form form_type_profile-edit" name="profile-edit-form" action="#" method="GET">
         <h3 class="form__title">Редактировать профиль</h3>
-        <input class="form__input form__input_type_name" type="text" value="" placeholder="Имя" required>
-        <input class="form__input form__input_type_occupation" type="text" value="" placeholder="Профессия" required>
+        <label class="form__label">
+          <input class="form__input form__input_type_name" type="text" value="" placeholder="Имя" required>
+          <span class="form__input-error">Необходимо заполнить данное поле</span>
+        </label>
+        <label class="form__label">
+          <input class="form__input form__input_type_occupation" type="text" value="" placeholder="Профессия" required>
+          <span class="form__input-error">Необходимо заполнить данное поле</span>
+        </label>
         <button class="form__submit-button" type="submit">Сохранить</button>
       </form>
     </div>
@@ -60,8 +66,14 @@
       <button class="popup__close-button" type="button" aria-label="Закрыть окно редактирования профиля"></button>
       <form class="form form_type_place-add" name="place-add-form" action="#" method="GET">
         <h3 class="form__title">Новое место</h3>
-        <input class="form__input form__input_type_place-name" type="text" value="" placeholder="Название" required>
-        <input class="form__input form__input_type_link" type="url" value="" placeholder="Ссылка на картинку" required>
+        <label class="form__label">
+          <input class="form__input form__input_type_place-name" type="text" value="" placeholder="Название" required>
+          <span class="form__input-error">Необходимо заполнить данное поле</span>
+        </label>
+        <label class="form__label">
+          <input class="form__input form__input_type_link form__input_invalid" type="url" value="" placeholder="Ссылка на картинку" required>
+          <span class="form__input-error">Необходимо заполнить данное поле</span>
+        </label>
         <button class="form__submit-button" type="submit">Создать</button>
       </form>
     </div>
