@@ -42,20 +42,30 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
+const validationParam = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit-button',
+  inactiveButtonClass: 'form__submit-button_disabled',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__input-error_visible'
+};
 
 //Функции
 //Открытие и закрытие попапа
 function openClosePopup(popup) {
-  popup.classList.toggle('popup_opened');
+  if(popup.classList.contains('popup_opened')){
+    popup.classList.remove('popup_opened');
+  } else {
+    resetValidationErrors(popup.querySelector('.form'), validationParam);
+    popup.classList.add('popup_opened');
+  }
 }
 
 //Заполнение формы профиля значениями со страницы
 function fillFromPage() {
-  if (profilePopup.classList.contains('popup_opened')) {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
-  }
 }
 
 //Обработчик формы профиля
@@ -118,8 +128,7 @@ function placeFormHandler(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   addItem(cardsContainer, renderCard(placeNameInput.value, placeLinkInput.value));
   openClosePopup(placePopup);
-  placeNameInput.value = '';
-  placeLinkInput.value = '';
+  placeForm.reset();
 }
 
 //Создание карточек из массива
@@ -129,14 +138,32 @@ function getCards(arrayOfCards) {
   });
 }
 
+// включение валидации вызовом enableValidation
+// все настройки передаются при вызове
+enableValidation(validationParam);
 
 //Слушатели
 document.addEventListener("DOMContentLoaded", () => { getCards(initialCards) });
-profileFormCaller.addEventListener('click', () => { openClosePopup(profilePopup); });
+document.addEventListener('keydown', (event) => {
+  if(event.key === 'Escape') {
+    openClosePopup(document.querySelector('.popup_opened'));
+  }
+});
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('popup_opened')){
+    openClosePopup(document.querySelector('.popup_opened'));
+  }
+});
+
 profileFormCaller.addEventListener('click', fillFromPage);
-profileFormCloser.addEventListener('click', () => { openClosePopup(profilePopup); });
+profileFormCaller.addEventListener('click', () => {openClosePopup(profilePopup);});
+profileFormCloser.addEventListener('click', () => {
+  openClosePopup(profilePopup);
+});
 profileForm.addEventListener('submit', profileFormHandler);
+
 placeFormCaller.addEventListener('click', () => { openClosePopup(placePopup); });
 placeFormCloser.addEventListener('click', () => { openClosePopup(placePopup); });
 placeForm.addEventListener('submit', placeFormHandler);
 photoPopupCloser.addEventListener('click', () => { openClosePopup(photoPopup); });
+

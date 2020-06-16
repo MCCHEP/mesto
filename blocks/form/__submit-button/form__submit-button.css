@@ -19,13 +19,6 @@
   background: rgba(0, 0, 0, 0.8);
 }
 
-.form__submit-button:disabled {
-  color: #000000;
-  border: 1px solid #000000;
-  background:transparent;
-  opacity: 0.2;
-}
-
 @media screen and (max-width: 600px) {
   .form__submit-button {
     width: 100%;
