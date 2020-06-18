@@ -93,6 +93,19 @@ function profileFormHandler(evt) {
   closePopup(profilePopup);
 }
 
+//Обработчик вызова формы профиля
+function openProfileForm() {
+  fillFromPage();
+  resetValidationErrors(profileForm, validationParam);
+  openPopup(profilePopup);
+}
+
+//Обработчик вызова добавления карточки
+function openPlaceForm() {
+  resetValidationErrors(placeForm, validationParam);
+  openPopup(placePopup);
+}
+
 //Добавление элемента в контейнер
 function addItem(container, item) {
   container.prepend(item);
@@ -100,31 +113,25 @@ function addItem(container, item) {
 
 //Создание слайда
 function createSlide(event) {
-  if (event.target.classList.contains('element__image')) {
-    const currentImage = event.target;
-    const slideImage = document.querySelector('.popup__image');
-    const slideTitle = document.querySelector('.popup__image-title');
-    slideImage.src = currentImage.src;
-    slideImage.alt = currentImage.alt;
-    slideTitle.textContent = currentImage.alt;
-    openPopup(photoPopup);
-  }
+  const currentImage = event.target;
+  const slideImage = document.querySelector('.popup__image');
+  const slideTitle = document.querySelector('.popup__image-title');
+  slideImage.src = currentImage.src;
+  slideImage.alt = currentImage.alt;
+  slideTitle.textContent = currentImage.alt;
+  openPopup(photoPopup);
 }
 
 //Обработчик слушателя удаления
 function deleteCard(event) {
-  if (event.target.classList.contains('element__delete-button')) {
-    const parentItem = event.target.parentNode;
-    parentItem.remove();
-  }
+  const parentItem = event.target.parentNode;
+  parentItem.remove();
 }
 
 //Обработчик слушателя лайка
 function likeImage(event) {
-  if (event.target.classList.contains('element__like-button')) {
-    const eventTarget = event.target;
-    eventTarget.classList.toggle('element__like-button_active');
-  }
+  const eventTarget = event.target;
+  eventTarget.classList.toggle('element__like-button_active');
 }
 
 
@@ -134,10 +141,16 @@ function renderCard(name, link) {
   const card = cardTemplate.cloneNode(true);
   const cardTitle = card.querySelector('.element__image-title');
   const cardImage = card.querySelector('.element__image');
+  const likeButton = card.querySelector('.element__like-button');
+  const deleteButton = card.querySelector('.element__delete-button');
 
   cardTitle.textContent = name;
   cardImage.src = link;
   cardImage.alt = name;
+
+  likeButton.addEventListener('click', likeImage);
+  deleteButton.addEventListener('click', deleteButton);
+  cardImage.addEventListener('click', createSlide);
 
   return card;
 }
@@ -163,26 +176,16 @@ enableValidation(validationParam);
 
 //Слушатели
 document.addEventListener("DOMContentLoaded", () => { getCards(initialCards) });
-//Лайки
-document.addEventListener('click', likeImage);
-//Удаление
-document.addEventListener('click', deleteCard);
-//Слайды
-document.addEventListener('click', createSlide);
 
-
-
-profileFormCaller.addEventListener('click', fillFromPage);
-profileFormCaller.addEventListener('click', () => { resetValidationErrors(profileForm, validationParam); });
-profileFormCaller.addEventListener('click', () => { openPopup(profilePopup); });
+profileFormCaller.addEventListener('click', openProfileForm);
 profileFormCloser.addEventListener('click', () => {
   closePopup(profilePopup);
 });
 profileForm.addEventListener('submit', profileFormHandler);
 
-placeFormCaller.addEventListener('click', () => { openPopup(placePopup); });
-placeFormCaller.addEventListener('click', () => { resetValidationErrors(placeForm, validationParam); });
+placeFormCaller.addEventListener('click', openPlaceForm);
 placeFormCloser.addEventListener('click', () => { closePopup(placePopup); });
 placeForm.addEventListener('submit', placeFormHandler);
+
 photoPopupCloser.addEventListener('click', () => { closePopup(photoPopup); });
 
