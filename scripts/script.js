@@ -149,7 +149,7 @@ function renderCard(name, link) {
   cardImage.alt = name;
 
   likeButton.addEventListener('click', likeImage);
-  deleteButton.addEventListener('click', deleteButton);
+  deleteButton.addEventListener('click', deleteCard);
   cardImage.addEventListener('click', createSlide);
 
   return card;
