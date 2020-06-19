@@ -11,6 +11,7 @@
   border: none;
   background-color: transparent;
   transition: opacity 0.4s ease;
+  cursor: pointer;
 }
 
 .element__delete-button:hover {
