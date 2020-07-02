@@ -14,6 +14,8 @@ const placeFormCloser = placePopup.querySelector('.popup__close-button');
 const placeNameInput = placeForm.querySelector('.form__input_type_place-name');
 const placeLinkInput = placeForm.querySelector('.form__input_type_link');
 const cardsContainer = document.querySelector('.elements');
+const slideImage = document.querySelector('.popup__image');
+const slideTitle = document.querySelector('.popup__image-title');
 const photoPopup = document.querySelector('.popup_type_photo')
 const photoPopupCloser = photoPopup.querySelector('.popup__close-button');
 const initialCards = [
@@ -111,54 +113,66 @@ function addItem(container, item) {
   container.prepend(item);
 }
 
-//Создание слайда
-function createSlide(event) {
-  const currentImage = event.target;
-  const slideImage = document.querySelector('.popup__image');
-  const slideTitle = document.querySelector('.popup__image-title');
-  slideImage.src = currentImage.src;
-  slideImage.alt = currentImage.alt;
-  slideTitle.textContent = currentImage.alt;
-  openPopup(photoPopup);
+class Card {
+  constructor(data, cardSelector) {
+      this._name = data.name;
+      this._link = data.link;
+      this._cardSelector = cardSelector;
+  }
+
+  _getTemplate() {
+    const cardElement = document
+    .querySelector(this._cardSelector)
+    .content
+    .querySelector('.element')
+    .cloneNode(true);
+
+    // вернём DOM-элемент карточки
+    return cardElement;
+  }
+
+  _likeImage() {
+    this._likeButton.classList.toggle('element__like-button_active');
+  }
+
+  _deleteCard() {
+    this._element.remove();
+  }
+
+  _createSlide() {
+    slideImage.src = this._link;
+    slideImage.alt = this._name;
+    slideTitle.textContent = this._name;
+    openPopup(photoPopup);
+  }
+
+  _setEventListeners() {
+    this._likeButton.addEventListener('click', () => { this._likeImage(); } );
+    this._deleteButton.addEventListener('click', () => { this._deleteCard(); });
+    this._cardImage.addEventListener('click', () => { this._createSlide(); });
+  }
+
+  generateCard() {
+    this._element = this._getTemplate();
+    this._cardTitle = this._element.querySelector('.element__image-title');
+    this._cardImage = this._element.querySelector('.element__image');
+    this._likeButton = this._element.querySelector('.element__like-button');
+    this._deleteButton = this._element.querySelector('.element__delete-button');
+    this._setEventListeners();
+
+    this._cardTitle.textContent = this._name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
+    return this._element;
+  }
 }
 
-//Обработчик слушателя удаления
-function deleteCard(event) {
-  const parentItem = event.target.parentNode;
-  parentItem.remove();
-}
-
-//Обработчик слушателя лайка
-function likeImage(event) {
-  const eventTarget = event.target;
-  eventTarget.classList.toggle('element__like-button_active');
-}
-
-
-//Создание карточки из шаблона
-function renderCard(name, link) {
-  const cardTemplate = document.querySelector('.card-template').content;
-  const card = cardTemplate.cloneNode(true);
-  const cardTitle = card.querySelector('.element__image-title');
-  const cardImage = card.querySelector('.element__image');
-  const likeButton = card.querySelector('.element__like-button');
-  const deleteButton = card.querySelector('.element__delete-button');
-
-  cardTitle.textContent = name;
-  cardImage.src = link;
-  cardImage.alt = name;
-
-  likeButton.addEventListener('click', likeImage);
-  deleteButton.addEventListener('click', deleteCard);
-  cardImage.addEventListener('click', createSlide);
-
-  return card;
-}
 
 //Обработчик формы добавления места
 function placeFormHandler(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  addItem(cardsContainer, renderCard(placeNameInput.value, placeLinkInput.value));
+  const card = new Card({name: placeNameInput.value, link: placeLinkInput.value}, '.card-template');
+  addItem(cardsContainer, card.generateCard());
   closePopup(placePopup);
   placeForm.reset();
 }
@@ -166,7 +180,8 @@ function placeFormHandler(evt) {
 //Создание карточек из массива
 function getCards(arrayOfCards) {
   arrayOfCards.forEach((element) => {
-    addItem(cardsContainer, renderCard(element.name, element.link))
+    const card = new Card(element, '.card-template');
+    addItem(cardsContainer, card.generateCard());
   });
 }
 
@@ -188,4 +203,6 @@ placeFormCloser.addEventListener('click', () => { closePopup(placePopup); });
 placeForm.addEventListener('submit', placeFormHandler);
 
 photoPopupCloser.addEventListener('click', () => { closePopup(photoPopup); });
+
+
 
