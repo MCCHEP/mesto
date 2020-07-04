@@ -50,14 +50,16 @@
       <form class="form form_type_profile-edit" name="profile-edit-form" action="#" method="GET" novalidate>
         <h3 class="form__title">Редактировать профиль</h3>
         <label class="form__label">
-          <input id="name-input" class="form__input form__input_type_name" type="text" value="" placeholder="Имя" minlength="2" maxlength="40" required>
+          <input id="name-input" class="form__input form__input_type_name" type="text" value="" placeholder="Имя"
+            minlength="2" maxlength="40" required>
           <span id="name-input-error" class="form__input-error"></span>
         </label>
         <label class="form__label">
-          <input id="occupation-input" class="form__input form__input_type_occupation" type="text" value="" placeholder="Профессия" minlength="2" maxlength="200" required>
+          <input id="occupation-input" class="form__input form__input_type_occupation" type="text" value=""
+            placeholder="Профессия" minlength="2" maxlength="200" required>
           <span id="occupation-input-error" class="form__input-error"></span>
         </label>
-        <button class="form__submit-button" type="submit" >Сохранить</button>
+        <button class="form__submit-button" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
@@ -67,14 +69,16 @@
       <form class="form form_type_place-add" name="place-add-form" action="#" method="GET" novalidate>
         <h3 class="form__title">Новое место</h3>
         <label class="form__label">
-          <input id="placename-input" class="form__input form__input_type_place-name" type="text" value="" placeholder="Название" minlength="1" maxlength="30" required>
+          <input id="placename-input" class="form__input form__input_type_place-name" type="text" value=""
+            placeholder="Название" minlength="1" maxlength="30" required>
           <span id="placename-input-error" class="form__input-error"></span>
         </label>
         <label class="form__label">
-          <input id="url-input" class="form__input form__input_type_link" type="url" value="" placeholder="Ссылка на картинку" required>
+          <input id="url-input" class="form__input form__input_type_link" type="url" value=""
+            placeholder="Ссылка на картинку" required>
           <span id="url-input-error" class="form__input-error"></span>
         </label>
-        <button class="form__submit-button" type="submit" >Создать</button>
+        <button class="form__submit-button" type="submit">Создать</button>
       </form>
     </div>
   </div>
@@ -85,9 +89,11 @@
       <h3 class="popup__image-title"></h3>
     </div>
   </div>
-  <script src="scripts/validate.js"></script>
-  <script src="scripts/script.js"></script>
 
+  <script type="module" src="scripts/utils.js"></script>
+  <script type="module" src="scripts/Card.js"></script>
+  <script type="module" src="scripts/FormValidator.js"></script>
+  <script type="module" src="scripts/index.js"></script>
 </body>
 
 </html>

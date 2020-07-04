@@ -1,15 +1,4 @@
-/*
-const resetValidationErrors = (formElement, config) => {
-  const buttonElement = formElement.querySelector(config.submitButtonSelector);
-  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
-  toggleButtonState(inputList, buttonElement, config.inactiveButtonClass);
-  inputList.forEach((inputElement) => {
-    hideInputError(formElement, inputElement, config);
-  });
-};
-*/
-
-class FormValidator {
+export class FormValidator {
   constructor(config, form) {
     this._form = form;
     this._inputList =  Array.from(this._form.querySelectorAll(config.inputSelector));
@@ -80,3 +69,4 @@ class FormValidator {
     });
   };
 }
+
