@@ -53,6 +53,14 @@ const validationParam = {
   errorClass: 'form__input-error_visible'
 };
 
+
+// включение валидации вызовом enableValidation
+// все настройки передаются при вызове
+const profileFormValidator = new FormValidator(validationParam, profileForm);
+profileFormValidator.enableValidation();
+const placeFormValidator = new FormValidator(validationParam, placeForm);
+placeFormValidator.enableValidation();
+
 //Функции
 //Открытие и закрытие попапа
 function closePopup(popup) {
@@ -98,13 +106,13 @@ function profileFormHandler(evt) {
 //Обработчик вызова формы профиля
 function openProfileForm() {
   fillFromPage();
-  resetValidationErrors(profileForm, validationParam);
+  profileFormValidator.resetValidationErrors();
   openPopup(profilePopup);
 }
 
 //Обработчик вызова добавления карточки
 function openPlaceForm() {
-  resetValidationErrors(placeForm, validationParam);
+  placeFormValidator.resetValidationErrors();
   openPopup(placePopup);
 }
 
@@ -185,9 +193,6 @@ function getCards(arrayOfCards) {
   });
 }
 
-// включение валидации вызовом enableValidation
-// все настройки передаются при вызове
-enableValidation(validationParam);
 
 //Слушатели
 document.addEventListener("DOMContentLoaded", () => { getCards(initialCards) });
