@@ -1,3 +1,8 @@
+//Константы для создания слайда
+const slideImage = document.querySelector('.popup__image');
+const slideTitle = document.querySelector('.popup__image-title');
+const photoPopup = document.querySelector('.popup_type_photo');
+
 //Открытие и закрытие попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
@@ -22,4 +27,4 @@ function openPopup(popup) {
   document.addEventListener('keydown', closeOnEscape);
 }
 
-export {closePopup, closeOnEscape, closeOnOverlay, openPopup};
+export {closePopup, closeOnEscape, closeOnOverlay, openPopup, slideImage, slideTitle, photoPopup};

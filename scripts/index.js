@@ -1,6 +1,7 @@
-import {closePopup, closeOnEscape, closeOnOverlay, openPopup  } from "./utils.js";
-import {Card} from "./Card.js";
-import {FormValidator} from "./FormValidator.js";
+import {closePopup, openPopup,photoPopup} from "./utils.js";
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import {initialCards}  from "./defaultCards.js";
 
 // Находим элементы в DOM и объявляем константы
 const profilePopup = document.querySelector('.popup_type_profile-edit');
@@ -18,36 +19,7 @@ const placeFormCloser = placePopup.querySelector('.popup__close-button');
 const placeNameInput = placeForm.querySelector('.form__input_type_place-name');
 const placeLinkInput = placeForm.querySelector('.form__input_type_link');
 const cardsContainer = document.querySelector('.elements');
-export const slideImage = document.querySelector('.popup__image');
-export const slideTitle = document.querySelector('.popup__image-title');
-export const photoPopup = document.querySelector('.popup_type_photo')
 const photoPopupCloser = photoPopup.querySelector('.popup__close-button');
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 const validationParam = {
   formSelector: '.form',
   inputSelector: '.form__input',
@@ -121,7 +93,7 @@ function getCards(arrayOfCards) {
 
 
 //Слушатели
-document.addEventListener("DOMContentLoaded", () => { getCards(initialCards) });
+document.addEventListener("DOMContentLoaded", () => { getCards(initialCards); });
 
 profileFormCaller.addEventListener('click', openProfileForm);
 profileFormCloser.addEventListener('click', () => {

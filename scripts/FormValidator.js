@@ -1,26 +1,26 @@
-export class FormValidator {
+export default class FormValidator {
   constructor(config, form) {
     this._form = form;
-    this._inputList =  Array.from(this._form.querySelectorAll(config.inputSelector));
+    this._inputList = Array.from(this._form.querySelectorAll(config.inputSelector));
     this._buttonElement = this._form.querySelector(config.submitButtonSelector);
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._errorClass = config.errorClass;
     this._inputErrorClass = config.inputErrorClass;
   }
 
-  _hideInputError (inputElement) {
+  _hideInputError(inputElement) {
     this._errorElement = this._form.querySelector(`#${inputElement.id}-error`);
     this._errorElement.classList.remove(this._errorClass);
     inputElement.classList.remove(this._inputErrorClass);
     this._errorElement.textContent = '';
-  };
+  }
 
   _showInputError(inputElement, errorMessage) {
     this._errorElement = this._form.querySelector(`#${inputElement.id}-error`);
     this._errorElement.classList.add(this._errorClass);
     inputElement.classList.add(this._inputErrorClass);
     this._errorElement.textContent = errorMessage;
-  };
+  }
 
   _hasInvalidInput() {
     return this._inputList.some((inputElement) => {
