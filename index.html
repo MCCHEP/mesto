@@ -26,16 +26,7 @@
       </section>
       <section class="gallery page__gallery">
         <ul class="elements">
-          <template class="card-template">
-            <li class="element">
-              <button class="element__delete-button" type="button" aria-label="Удалить фото места"></button>
-              <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкесск" class="element__image">
-              <div class="element__text">
-                <h2 class="element__image-title">Карачаево-Черкесск</h2>
-                <button class="element__like-button" type="button" aria-label="Поставить фотографии лайк"></button>
-              </div>
-            </li>
-          </template>
+
 
         </ul>
       </section>
@@ -50,12 +41,12 @@
       <form class="form form_type_profile-edit" name="profile-edit-form" action="#" method="GET" novalidate>
         <h3 class="form__title">Редактировать профиль</h3>
         <label class="form__label">
-          <input id="name-input" class="form__input form__input_type_name" type="text" value="" placeholder="Имя"
+          <input name="profilename" id="name-input" class="form__input form__input_type_name" type="text" value="" placeholder="Имя"
             minlength="2" maxlength="40" required>
           <span id="name-input-error" class="form__input-error"></span>
         </label>
         <label class="form__label">
-          <input id="occupation-input" class="form__input form__input_type_occupation" type="text" value=""
+          <input name="info" id="occupation-input" class="form__input form__input_type_occupation" type="text" value=""
             placeholder="Профессия" minlength="2" maxlength="200" required>
           <span id="occupation-input-error" class="form__input-error"></span>
         </label>
@@ -69,12 +60,12 @@
       <form class="form form_type_place-add" name="place-add-form" action="#" method="GET" novalidate>
         <h3 class="form__title">Новое место</h3>
         <label class="form__label">
-          <input id="placename-input" class="form__input form__input_type_place-name" type="text" value=""
+          <input id="placename-input" name="name" class="form__input form__input_type_place-name" type="text" value=""
             placeholder="Название" minlength="1" maxlength="30" required>
           <span id="placename-input-error" class="form__input-error"></span>
         </label>
         <label class="form__label">
-          <input id="url-input" class="form__input form__input_type_link" type="url" value=""
+          <input id="url-input" name="link" class="form__input form__input_type_link" type="url" value=""
             placeholder="Ссылка на картинку" required>
           <span id="url-input-error" class="form__input-error"></span>
         </label>
@@ -89,7 +80,17 @@
       <h3 class="popup__image-title"></h3>
     </div>
   </div>
-  <script type="module" src="scripts/index.js"></script>
+  <template class="card-template">
+    <li class="element">
+      <button class="element__delete-button" type="button" aria-label="Удалить фото места"></button>
+      <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкесск" class="element__image">
+      <div class="element__text">
+        <h2 class="element__image-title">Карачаево-Черкесск</h2>
+        <button class="element__like-button" type="button" aria-label="Поставить фотографии лайк"></button>
+      </div>
+    </li>
+  </template>
+  <script type="module" src="./pages/index.js"></script>
 </body>
 
 </html>

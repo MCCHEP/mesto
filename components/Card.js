@@ -1,10 +1,11 @@
-import {slideImage, slideTitle, photoPopup, openPopup} from "./utils.js";
+
 
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
       this._name = data.name;
       this._link = data.link;
       this._cardSelector = cardSelector;
+      this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -26,17 +27,10 @@ export default class Card {
     this._element.remove();
   }
 
-  _createSlide() {
-    slideImage.src = this._link;
-    slideImage.alt = this._name;
-    slideTitle.textContent = this._name;
-    openPopup(photoPopup);
-  }
-
   _setEventListeners() {
     this._likeButton.addEventListener('click', () => { this._likeImage(); } );
     this._deleteButton.addEventListener('click', () => { this._deleteCard(); });
-    this._cardImage.addEventListener('click', () => { this._createSlide(); });
+    this._cardImage.addEventListener('click', () => { this._handleCardClick(this._link, this._name); });
   }
 
   generateCard() {
