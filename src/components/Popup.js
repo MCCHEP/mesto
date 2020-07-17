@@ -22,13 +22,13 @@ export default class Popup {
   }
 
   setEventListeners() {
-    this._popup.addEventListener('click', this._closeOnOverlay);
+    this._popup.addEventListener('mousedown', this._closeOnOverlay);
     document.addEventListener('keydown', this._handleEscClose);
     this._popup.querySelector('.popup__close-button').addEventListener('click', this.close);
   }
 
   _removeEventListeners() {
-    this._popup.removeEventListener('click', this._closeOnOverlay);
+    this._popup.removeEventListener('mousedown', this._closeOnOverlay);
     document.removeEventListener('keydown', this._handleEscClose);
     this._popup.querySelector('.popup__close-button').removeEventListener('click', this.close);
   }
