@@ -14,7 +14,12 @@
     </header>
     <main class="content">
       <section class="profile page__profile">
+        <div class="profile__avatar-container">
+
+        <button class="profile__edit-avatar-button" type="button" aria-label="Сменить аватар"></button>
         <img src="./images/jak-kusto.jpg" alt="Фотография профиля" class="profile__avatar">
+        </div>
+
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
@@ -40,8 +45,8 @@
       <form class="form form_type_profile-edit" name="profile-edit-form" action="#" method="GET" novalidate>
         <h3 class="form__title">Редактировать профиль</h3>
         <label class="form__label">
-          <input name="profilename" id="name-input" class="form__input form__input_type_name" type="text" value="" placeholder="Имя"
-            minlength="2" maxlength="40" required>
+          <input name="profilename" id="name-input" class="form__input form__input_type_name" type="text" value=""
+            placeholder="Имя" minlength="2" maxlength="40" required>
           <span id="name-input-error" class="form__input-error"></span>
         </label>
         <label class="form__label">
@@ -72,11 +77,34 @@
       </form>
     </div>
   </div>
+  <div class="popup popup_type_edit-avatar">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button" aria-label="Закрыть окно редактирования аватара"></button>
+      <form class="form form_type_edit-avatar" name="edit-avatar-form" action="#" method="GET" novalidate>
+        <h3 class="form__title">Обновить аватар</h3>
+        <label class="form__label">
+          <input id="avatar-url-input" name="avatarLink" class="form__input form__input_type_link" type="url" value=""
+            placeholder="Ссылка на аватар" required>
+          <span id="avatar-url-input-error" class="form__input-error"></span>
+        </label>
+        <button class="form__submit-button" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
   <div class="popup popup_type_photo">
     <div class="popup__container">
       <button class="popup__close-button" type="button" aria-label="Закрыть окно редактирования профиля"></button>
       <img src="#" alt="" class="popup__image">
       <h3 class="popup__image-title"></h3>
+    </div>
+  </div>
+  <div class="popup popup_type_confirm">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button" aria-label="Закрыть окно редактирования профиля"></button>
+      <form class="form form_type_delete-card" name="delete-card-form" action="#" method="GET" novalidate>
+        <h3 class="form__title">Вы уверены?</h3>
+        <button class="form__submit-button" type="submit">Да</button>
+      </form>
     </div>
   </div>
   <template class="card-template">
@@ -85,7 +113,10 @@
       <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкесск" class="element__image">
       <div class="element__text">
         <h2 class="element__image-title">Карачаево-Черкесск</h2>
-        <button class="element__like-button" type="button" aria-label="Поставить фотографии лайк"></button>
+        <div class="element__like-container">
+          <button class="element__like-button" type="button" aria-label="Поставить фотографии лайк"></button>
+          <span class="element__like-counter">0</span>
+        </div>
       </div>
     </li>
   </template>

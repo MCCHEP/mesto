@@ -1,8 +1,8 @@
 .element__text {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     width: 246px;
-    margin: 25px 0 31px;
+    margin: 21px 0 24px;
 }
 
 @media screen and (max-width: 922px) and (min-width: 686px) {
