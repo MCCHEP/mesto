@@ -5,7 +5,7 @@ export default class Api {
     this._headers = data.headers;
   }
 
-  _prepareData(res){
+  _prepareData(res) {
     if (res.ok) {
       return res.json();
     }
@@ -53,7 +53,7 @@ export default class Api {
       {
         method: 'DELETE',
         headers: this._headers
-      });
+      }).then(this._prepareData);;
   }
 
   createCard(name, link) {

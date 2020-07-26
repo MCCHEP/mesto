@@ -1,11 +1,12 @@
 
 
 export default class Card {
-  constructor(data, cardSelector, handleImageClick, handleLikeClick, handleDeleteClick) {
+  constructor(data, cardSelector, myId, handleImageClick, handleLikeClick, handleDeleteClick) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
     this._cardId = data._id;
+    this._myId = myId;
     this._cardOwnerId = data.owner._id;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
@@ -43,7 +44,7 @@ export default class Card {
   }
 
   _checkCardOwner(owner) {
-   return this._cardOwnerId !== owner;
+    return this._cardOwnerId !== owner;
   }
 
   generateCard() {
@@ -54,10 +55,10 @@ export default class Card {
     this._likeCounter = this._element.querySelector('.element__like-counter');
     this._deleteButton = this._element.querySelector('.element__delete-button');
 
-    if (this._checkCardOwner('e8d90038bd8ac3fb47431ce4')) {
+    if (this._checkCardOwner(this._myId)) {
       this._deleteButton.remove();
     }
-    if (this._checkMyLikes('e8d90038bd8ac3fb47431ce4')) {
+    if (this._checkMyLikes(this._myId)) {
       this._likeButton.classList.add('element__like-button_active');
     }
 

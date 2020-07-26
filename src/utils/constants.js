@@ -21,6 +21,10 @@ export const avatarEditForm = document.querySelector('.form_type_edit-avatar');
 export const avatarLinkInput = avatarEditForm.querySelector('.form__input_type_link');
 export const avatarImage = document.querySelector('.profile__avatar');
 export const avatarPopupSelector = '.popup_type_edit-avatar';
+export const defaultUrl = 'https://mesto.nomoreparties.co';
+export const myToken = '072afc53-82e4-4aa4-b920-dd02ed4506a2';
+export const myGroup = 'cohort-13';
+export const defaultType = 'application/json';
 export const validationParam = {
   formSelector: '.form',
   inputSelector: '.form__input',

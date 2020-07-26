@@ -27,10 +27,15 @@ import {
   avatarEditForm,
   avatarPopupSelector,
   avatarLinkInput,
-  avatarImage
+  avatarImage,
+  defaultUrl,
+  myToken,
+  myGroup,
+  defaultType
 } from "../utils/constants.js";
 
 let cardList;
+let myId;
 
 //Функции
 //Колбэк слайда
@@ -58,7 +63,7 @@ const handleLikeClick = (cardId, likeButton, likeCounter) => {
 const handleDeleteClick = (item, id) => {
   const thisItem = item;
   const thisItemId = id;
-  const confirmPopup = new PopupWithConfirm(confirmPopupSelector, () => {
+  const confirmPopup = new PopupWithConfirm(confirmPopupSelector, (event) => {
     event.preventDefault();
     mestoApi.deleteCard(thisItemId)
       .catch((err) => {
@@ -72,7 +77,7 @@ const handleDeleteClick = (item, id) => {
 
 //Колбэк создания карточки
 const cardRenderer = (data) => {
-  const card = new Card(data, '.card-template', handleImageClick, handleLikeClick, handleDeleteClick);
+  const card = new Card(data, '.card-template', myId, handleImageClick, handleLikeClick, handleDeleteClick);
   const cardElement = card.generateCard();
   cardList.setItem(cardElement);
 }
@@ -110,11 +115,11 @@ const openAvatarForm = () => {
 //Создание экземпляров классов
 //Api
 const mestoApi = new Api({
-  link: 'https://mesto.nomoreparties.co',
-  groupId: 'cohort-13',
+  link: defaultUrl,
+  groupId: myGroup,
   headers: {
-    authorization: '072afc53-82e4-4aa4-b920-dd02ed4506a2',
-    'Content-Type': 'application/json'
+    authorization: myToken,
+    'Content-Type': defaultType
   }
 });
 
@@ -124,7 +129,7 @@ const profile = new UserInfo(profileName, profileJob);
 //Попап слайда
 const photoPopup = new PopupWithImage(photoPopupSelector);
 //Попап добавления карточки
-const placePopup = new PopupWithForm(placePopupSelector, () => {
+const placePopup = new PopupWithForm(placePopupSelector, (event) => {
   event.preventDefault();
   const data = placePopup._getInputValues();
   placePopup.indicateFormLoading();
@@ -134,13 +139,15 @@ const placePopup = new PopupWithForm(placePopupSelector, () => {
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль
+    })
+    .finally(() => {
+      placePopup.close();
+      placeFormValidator.resetValidationErrors();
     });
-  placeFormValidator.resetValidationErrors();
-  placePopup.close();
 });
 
 //Попап редактирования профиля
-const profilePopup = new PopupWithForm(profilePopupSelector, () => {
+const profilePopup = new PopupWithForm(profilePopupSelector, (event) => {
   event.preventDefault();
   profilePopup.indicateFormLoading();
   const data = profilePopup._getInputValues();
@@ -150,12 +157,15 @@ const profilePopup = new PopupWithForm(profilePopupSelector, () => {
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль
+    })
+    .finally(() => {
+      profilePopup.close();
+      profileFormValidator.resetValidationErrors();
     });
-  profilePopup.close();
 });
 
 //Попап изменения аватара
-const avatarPopup = new PopupWithForm(avatarPopupSelector, () => {
+const avatarPopup = new PopupWithForm(avatarPopupSelector, (event) => {
   event.preventDefault();
   avatarPopup.indicateFormLoading();
   const data = avatarPopup._getInputValues();
@@ -165,8 +175,11 @@ const avatarPopup = new PopupWithForm(avatarPopupSelector, () => {
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль
+    })
+    .finally(() => {
+      avatarPopup.close();
+      avatarFormValidator.resetValidationErrors();
     });
-  avatarPopup.close();
 });
 
 //Валидаторы
@@ -193,6 +206,7 @@ mestoApi.getInitalCards()
 //Загрузка информации профиля
 mestoApi.getProfileData()
   .then((result) => {
+    myId = result._id;
     profile.setUserInfo(result.name, result.about);
     avatarImage.src = result.avatar;
   })
