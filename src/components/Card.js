@@ -32,7 +32,7 @@ export default class Card {
   }
 
   _checkMyLikes(myId) {
-    let result = this._likes.find(element => {
+    const result = this._likes.find(element => {
       return element._id === myId;
     });
     if (result) {
